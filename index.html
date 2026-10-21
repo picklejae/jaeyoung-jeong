@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%233D5A3A%22/%3E%3Ctext x=%2232%22 y=%2243%22 font-family=%22Arial,sans-serif%22 font-size=%2228%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22%3EJJ%3C/text%3E%3C/svg%3E">
-<title>Jason Jeong</title>
-<meta name="description" content="Jason (Jaeyoung) Jeong: Chicago Booth MBA candidate, former Army logistics officer, building practical tools with data and AI.">
+<title>Jaeyoung Jeong</title>
+<meta name="description" content="Jaeyoung Jeong: Chicago Booth MBA candidate, former U.S. Army Special Operations logistician, building practical tools with data and AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one narrow column; hero, two wide project cases with screenshots, a short about, footer. */
+/* Layout: one narrow column; hero, three compact project cards in one row, a short about, footer. */
 :root {
   --bg: #F3F4EF;        /* field-paper, slight olive bias */
   --surface: #FFFFFF;
@@ -46,24 +46,34 @@ body {
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.wrap { max-width: 980px; margin: 0 auto; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+section, header.hero { scroll-margin-top: calc(84px + env(safe-area-inset-top, 0px)); }
 a { color: inherit; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 /* Nav */
-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; flex-wrap: wrap; }
+/* Floating nav: stays pinned near the top while the page scrolls */
+nav {
+  position: sticky; top: calc(12px + env(safe-area-inset-top, 0px)); z-index: 20; margin-top: 12px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap;
+  padding: 12px 22px; border-radius: 999px; border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: 0 6px 24px color-mix(in srgb, var(--ink) 10%, transparent);
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
 .brand { font: 700 1.05rem/1 var(--display); font-stretch: 112%; text-decoration: none; letter-spacing: .01em; }
 .navlinks { display: flex; gap: 22px; flex-wrap: wrap; font-size: .95rem; }
 .navlinks a { text-decoration: none; color: var(--muted); }
 .navlinks a:hover { color: var(--ink); }
 
 /* Hero */
-.hero { padding-block: 56px 72px; display: grid; gap: 22px; }
+.hero { padding-block: 64px 72px; display: grid; gap: 22px; }
 .label { font: 500 .78rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 h1 {
-  margin: 0; font-family: var(--display); font-weight: 800; font-stretch: 72%;
-  font-size: clamp(2.6rem, 7.4vw, 5.2rem); line-height: .98; letter-spacing: -.01em;
-  text-wrap: balance; max-width: 15ch; text-transform: uppercase;
+  margin: 0; font-family: var(--display); font-weight: 700; font-stretch: 88%;
+  font-size: clamp(1.9rem, 4.4vw, 3.2rem); line-height: 1.1; letter-spacing: -.01em;
+  text-wrap: balance;
 }
 .lede { margin: 0; max-width: 60ch; color: var(--muted); font-size: 1.15rem; }
 .lede strong { color: var(--ink); font-weight: 600; }
@@ -83,35 +93,45 @@ section { padding-block: 56px; border-top: 1px solid var(--line); }
 h2 { margin: 0; font: 800 clamp(1.7rem, 4vw, 2.3rem)/1.05 var(--display); font-stretch: 80%; text-transform: uppercase; letter-spacing: .005em; }
 .sechead p { margin: 0; color: var(--muted); font-size: .95rem; }
 
-/* Projects */
-.projects { display: grid; gap: 40px; }
+/* Projects: three compact cards that fit in one screen */
+#projects { padding-block: 40px; }
+#projects .sechead { margin-bottom: 20px; }
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .project {
-  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start;
-  background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px;
+  display: flex; flex-direction: column; gap: 14px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px;
 }
 .shot { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); }
 .shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; transition: transform .4s ease; }
 .shot:hover img { transform: scale(1.02); }
 @media (prefers-reduced-motion: reduce) { .shot img { transition: none; } .shot:hover img { transform: none; } }
-.info { display: grid; gap: 14px; min-width: 0; padding-top: 4px; }
+.info { display: flex; flex-direction: column; gap: 10px; min-width: 0; flex: 1; padding-inline: 4px; }
 .meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font: 500 .74rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .status { display: inline-flex; align-items: center; gap: 6px; color: var(--live); }
 .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--live); }
-h3 { margin: 0; font: 800 1.65rem/1.05 var(--display); font-stretch: 85%; text-wrap: balance; }
+.project { container-type: inline-size; }
+h3 { margin: 0; font: 800 clamp(.9rem, 5.3cqi, 1.4rem)/1.1 var(--display); font-stretch: 85%; white-space: nowrap; }
+.points { margin: 0; padding-left: 18px; display: grid; gap: 5px; font-size: .9rem; line-height: 1.45; color: var(--muted); }
+.points li::marker { color: var(--accent); }
+.points b { color: var(--ink); font-weight: 600; }
 .info p { margin: 0; color: var(--muted); }
 .figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--line); }
 .figures div { padding-block: 10px; }
 .figures div + div { padding-left: 14px; border-left: 1px solid var(--line); }
 .figures b { display: block; font: 800 1.5rem/1.1 var(--display); font-stretch: 90%; font-variant-numeric: tabular-nums; }
 .figures span { font-size: .82rem; color: var(--muted); }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
-.tags li { font: 400 .75rem/1 var(--mono); padding: 6px 9px; border-radius: 6px; background: var(--bg); border: 1px solid var(--line); }
-.links { display: flex; gap: 18px; flex-wrap: wrap; font-weight: 600; font-size: .95rem; }
-.links a { text-decoration: none; border-bottom: 1.5px solid var(--accent); padding-bottom: 1px; }
-.links a:hover { color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; padding: 0; margin: 0; list-style: none; }
+.tags { margin-top: auto; }
+.tags li { font: 400 .68rem/1 var(--mono); padding: 4px 7px; border-radius: 6px; background: var(--bg); border: 1px solid var(--line); }
+.links { display: flex; gap: 8px; flex-wrap: wrap; }
+.links a { text-decoration: none; font: 600 .85rem/1 var(--body); padding: 9px 14px; border-radius: 999px; border: 1.5px solid var(--accent); color: var(--accent); }
+.links a.go { background: var(--accent); color: var(--accent-ink); }
+.links a:hover { filter: brightness(1.08); }
+.links a small { font-weight: 500; opacity: .8; }
 
 /* About */
-.about { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; }
+.about { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.about > div p:last-child { margin-bottom: 0; }
 .about p { margin: 0 0 16px; max-width: 62ch; }
 .record { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
 .record li { display: grid; gap: 2px; padding-block: 14px; border-bottom: 1px solid var(--line); }
@@ -127,9 +147,10 @@ footer { border-top: 1px solid var(--line); padding-block: 40px 56px; display: f
 .copy { font: 600 .8rem/1 var(--body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
 footer .fine { color: var(--muted); font-size: .85rem; }
 
+@media (max-width: 900px) { .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .projects { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 760px) {
-  .project, .about { grid-template-columns: minmax(0, 1fr); gap: 22px; }
-  .project { padding: 14px; }
+  .about { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .hero { padding-block: 32px 48px; }
   section { padding-block: 44px; }
   .navlinks { gap: 16px; }
@@ -139,7 +160,7 @@ footer .fine { color: var(--muted); font-size: .85rem; }
 <body>
 <div class="wrap">
   <nav aria-label="Main">
-    <a class="brand" href="#top">JASON JEONG</a>
+    <a class="brand" href="#top">JAEYOUNG JEONG</a>
     <div class="navlinks">
       <a href="#projects">Projects</a>
       <a href="#about">About</a>
@@ -149,9 +170,9 @@ footer .fine { color: var(--muted); font-size: .85rem; }
   </nav>
 
   <header class="hero" id="top">
-    <div class="label">Chicago Booth MBA ’28 · Former U.S. Army Logistics Officer</div>
-    <h1>I build tools that clear the paperwork.</h1>
-    <p class="lede">I’m <strong>Jason (Jaeyoung) Jeong</strong>. I spent my Army career moving money, parts and people, and most of the friction was spreadsheets nobody had time to reconcile. At Booth I study applied AI and business analytics, and I build small, working software that takes that kind of manual work off people’s desks.</p>
+    <div class="label">Chicago Booth MBA ’28 · Former U.S. Army Special Operations Logistician</div>
+    <h1>I learn best by building.</h1>
+    <p class="lede">I’m <strong>Jaeyoung Jeong</strong>. I spent my Army career moving money, processing purchases, and getting parts and people where they needed to be.<br>Most of the friction came from outdated systems, so I started using technology to fix them. Now I’m pursuing my MBA at Chicago Booth, studying applied AI and analytics, so I can keep doing that outside the military.</p>
     <div class="actions">
       <a class="btn primary" href="#projects">See my projects</a>
       <a class="btn" href="https://www.linkedin.com/in/jasonjaejeong" target="_blank" rel="noopener">Connect on LinkedIn</a>
@@ -161,51 +182,61 @@ footer .fine { color: var(--muted); font-size: .85rem; }
   <section id="projects">
     <div class="sechead">
       <h2>Projects</h2>
-      <p>Both are live. Click a screenshot to try it.</p>
+      <p>All three are live. Click a screenshot to open one.</p>
     </div>
 
     <div class="projects">
       <article class="project">
-        <a class="shot" href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener" aria-label="Open the Internship Compiler demo">
-          <img src="img/compiler.webp" alt="Internship Compiler board showing tech internship roles grouped by company, with deadlines and status" width="1440" height="900" loading="lazy">
+        <a class="shot" href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener" aria-label="Open the Summer Internship Compiler demo">
+          <img src="img/compiler.webp" alt="Summer internship board listing tech roles by company, with deadlines and status" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
           <div class="meta"><span class="status">Live</span><span>Web app</span></div>
-          <h3>Internship Compiler</h3>
-          <p>Two boards for MBA recruiting: one for summer internships and one for part-time internships you can do during the school year. They pull postings from the school career portal, LinkedIn and company career sites twice a day, then add visa notes, recruiting events and a plain-language summary of each job description. Classmates sign in with their school email and keep a private application pipeline.</p>
-          <div class="figures">
-            <div><b>300+</b><span>roles tracked</span></div>
-            <div><b>2×</b><span>daily refresh</span></div>
-          </div>
-          <ul class="tags">
-            <li>JavaScript</li><li>Supabase</li><li>Postgres row-level security</li><li>Email sign-in</li><li>Vercel</li><li>Claude automations</li>
+          <h3>Summer Internship Compiler</h3>
+          <ul class="points">
+            <li><b>300+</b> summer MBA roles, updated twice daily</li>
+            <li>Pulls from Booth, LinkedIn and company sites</li>
+            <li>Visa flags and short job summaries</li>
+            <li>Private pipeline for each classmate</li>
           </ul>
-          <div class="links">
-            <a href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener">Try the demo ↗</a>
-            <a href="https://github.com/picklejae/mba-internship-board" target="_blank" rel="noopener">Code ↗</a>
-          </div>
+          <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>Vercel</li><li>Claude</li></ul>
+          <div class="links"><a class="go" href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener">Demo ↗</a><a href="https://internship-compiler.vercel.app/" target="_blank" rel="noopener">Real site <small>(Booth login)</small> ↗</a></div>
         </div>
       </article>
 
       <article class="project">
-        <a class="shot" href="https://fund-recon.vercel.app" target="_blank" rel="noopener" aria-label="Open Fund Recon">
-          <img src="img/fund-recon.webp" alt="Fund Recon results: 1,026 lines auto-labeled, 13 needing a label, 11 changed amounts" width="1440" height="900" loading="lazy">
+        <a class="shot" href="https://picklejae.github.io/mba-internship-board/in-quarter/" target="_blank" rel="noopener" aria-label="Open the In-Quarter Internship Compiler demo">
+          <img src="img/inquarter.webp" alt="In-quarter internship board with part-time roles showing term, hours and pay" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
           <div class="meta"><span class="status">Live</span><span>Web app</span></div>
-          <h3>Fund Recon</h3>
-          <p>An expense labeler for Army Status of Funds reports. Budget analysts used to label every obligation line by hand each month. This tool remembers how each document number was labeled last time, applies it to the new report, and flags only what needs a person: new lines, amounts that changed, and charges from other units.</p>
-          <div class="figures">
-            <div><b>~99%</b><span>of lines labeled automatically</span></div>
-            <div><b>1,026 / 1,039</b><span>in the sample report</span></div>
-          </div>
-          <ul class="tags">
-            <li>Python</li><li>Flask</li><li>pandas</li><li>SQLite</li><li>pytest</li><li>Vercel</li>
+          <h3>In-Quarter Internship Compiler</h3>
+          <ul class="points">
+            <li>Part-time roles during the school year</li>
+            <li>Only remote, Chicago or flexible roles</li>
+            <li>Term, hours and pay at a glance</li>
+            <li>Own private pipeline, apart from summer</li>
           </ul>
-          <div class="links">
-            <a href="https://fund-recon.vercel.app" target="_blank" rel="noopener">Open the app ↗</a>
-            <a href="https://github.com/picklejae/automated-expenditure-labeling-system" target="_blank" rel="noopener">Code ↗</a>
-          </div>
+          <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>Vercel</li><li>Claude</li></ul>
+          <div class="links"><a class="go" href="https://picklejae.github.io/mba-internship-board/in-quarter/" target="_blank" rel="noopener">Demo ↗</a><a href="https://internship-compiler.vercel.app/in-quarter/" target="_blank" rel="noopener">Real site <small>(Booth login)</small> ↗</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="shot" href="https://fund-recon.vercel.app" target="_blank" rel="noopener" aria-label="Open the Government Purchase Auto-Sorter demo">
+          <img src="img/fund-recon.webp" alt="Government Purchase Auto-Sorter results: 1,026 lines auto-labeled, 13 needing a label, 11 changed amounts" width="1440" height="900" loading="lazy">
+        </a>
+        <div class="info">
+          <div class="meta"><span class="status">Live demo</span><span>Web app</span></div>
+          <h3>Government Purchase Auto-Sorter</h3>
+          <ul class="points">
+            <li>Sorts monthly Army purchases automatically</li>
+            <li>Turns days of manual work into hours</li>
+            <li>Flags only new lines and changed amounts</li>
+            <li>Public demo runs on sample data only</li>
+          </ul>
+          <ul class="tags"><li>Python</li><li>Flask</li><li>pandas</li><li>Vercel</li></ul>
+          <div class="links"><a class="go" href="https://fund-recon.vercel.app" target="_blank" rel="noopener">Demo ↗</a></div>
         </div>
       </article>
     </div>
@@ -215,13 +246,12 @@ footer .fine { color: var(--muted); font-size: .85rem; }
     <div class="sechead"><h2>About</h2></div>
     <div class="about">
       <div>
-        <p>I graduated from West Point with a degree in economics and served as a logistics officer, with assignments in the 2nd Infantry Division in Korea and the 1st Special Forces Group. The job was keeping units supplied and budgets accounted for, usually with too little time and too many spreadsheets.</p>
-        <p>That is where I learned to look for the repeatable part of a task and automate it. Fund Recon started as a fix for a monthly reconciliation that took analysts days.</p>
-        <p>I build with AI as a working partner. I scope the problem, write the requirements and test cases, and use Claude to help write and review code, run data pipelines and check results against the source. I care about the unglamorous parts: access control, data that stays correct, and tools a non-technical teammate can use on day one.</p>
+        <p>I learn best by building, and that’s how I started with AI tools while still in service. The Government Purchase Auto-Sorter began as a fix for a monthly reconciliation that took analysts days.</p>
+        <p>I want to connect the people skills I built leading soldiers, like earning trust and aligning stakeholders who want different things, with real technical fluency.</p>
       </div>
       <ul class="record" aria-label="Background">
         <li><small>Now</small><b>University of Chicago Booth School of Business</b><span>MBA candidate, Class of 2028 · Applied AI and Business Analytics</span></li>
-        <li><small>Service</small><b>U.S. Army, Logistics Officer</b><span>1st Special Forces Group · 2nd Infantry Division, Korea</span></li>
+        <li><small>Service</small><b>U.S. Army, Special Operations Logistician</b><span>1st Special Forces Group · 2nd Infantry Division, Korea</span></li>
         <li><small>Education</small><b>United States Military Academy, West Point</b><span>B.S. Economics</span></li>
       </ul>
     </div>
@@ -229,10 +259,10 @@ footer .fine { color: var(--muted); font-size: .85rem; }
 
   <footer>
     <div class="contact">
-      <span class="email" id="email">jjeong0@chicagobooth.edu</span>
+      <span class="email" id="email">jaeyoung.jeong@chicagobooth.edu</span>
       <button class="copy" id="copy" type="button">Copy email</button>
     </div>
-    <div class="fine">© 2026 Jason Jeong</div>
+    <div class="fine">© 2026 Jaeyoung Jeong</div>
   </footer>
 </div>
 
