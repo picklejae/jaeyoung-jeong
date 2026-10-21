@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%233D5A3A%22/%3E%3Ctext x=%2232%22 y=%2243%22 font-family=%22Arial,sans-serif%22 font-size=%2228%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22%3EJJ%3C/text%3E%3C/svg%3E">
+<title>Jason Jeong</title>
+<meta name="description" content="Jason (Jaeyoung) Jeong: Chicago Booth MBA candidate, former Army logistics officer, building practical tools with data and AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow column; hero, two wide project cases with screenshots, a short about, footer. */
+:root {
+  --bg: #F3F4EF;        /* field-paper, slight olive bias */
+  --surface: #FFFFFF;
+  --ink: #1C2321;
+  --muted: #5E6862;
+  --line: #DADDD4;
+  --accent: #3D5A3A;    /* olive drab */
+  --accent-ink: #FFFFFF;
+  --live: #2F7D4A;
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141816; --surface: #1C211E; --ink: #E7EAE4; --muted: #9AA39C; --line: #2E3530;
+    --accent: #A9C49B; --accent-ink: #141816; --live: #7BC48F; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141816; --surface: #1C211E; --ink: #E7EAE4; --muted: #9AA39C; --line: #2E3530;
+  --accent: #A9C49B; --accent-ink: #141816; --live: #7BC48F; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 980px; margin: 0 auto; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* Nav */
+nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; flex-wrap: wrap; }
+.brand { font: 700 1.05rem/1 var(--display); font-stretch: 112%; text-decoration: none; letter-spacing: .01em; }
+.navlinks { display: flex; gap: 22px; flex-wrap: wrap; font-size: .95rem; }
+.navlinks a { text-decoration: none; color: var(--muted); }
+.navlinks a:hover { color: var(--ink); }
+
+/* Hero */
+.hero { padding-block: 56px 72px; display: grid; gap: 22px; }
+.label { font: 500 .78rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 {
+  margin: 0; font-family: var(--display); font-weight: 800; font-stretch: 72%;
+  font-size: clamp(2.6rem, 7.4vw, 5.2rem); line-height: .98; letter-spacing: -.01em;
+  text-wrap: balance; max-width: 15ch; text-transform: uppercase;
+}
+.lede { margin: 0; max-width: 60ch; color: var(--muted); font-size: 1.15rem; }
+.lede strong { color: var(--ink); font-weight: 600; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+  font: 600 .95rem/1 var(--body); padding: 13px 20px; border-radius: 999px;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:hover { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+
+/* Sections */
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+.sechead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+h2 { margin: 0; font: 800 clamp(1.7rem, 4vw, 2.3rem)/1.05 var(--display); font-stretch: 80%; text-transform: uppercase; letter-spacing: .005em; }
+.sechead p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+/* Projects */
+.projects { display: grid; gap: 40px; }
+.project {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px;
+}
+.shot { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); }
+.shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; transition: transform .4s ease; }
+.shot:hover img { transform: scale(1.02); }
+@media (prefers-reduced-motion: reduce) { .shot img { transition: none; } .shot:hover img { transform: none; } }
+.info { display: grid; gap: 14px; min-width: 0; padding-top: 4px; }
+.meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font: 500 .74rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.status { display: inline-flex; align-items: center; gap: 6px; color: var(--live); }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--live); }
+h3 { margin: 0; font: 800 1.65rem/1.05 var(--display); font-stretch: 85%; text-wrap: balance; }
+.info p { margin: 0; color: var(--muted); }
+.figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--line); }
+.figures div { padding-block: 10px; }
+.figures div + div { padding-left: 14px; border-left: 1px solid var(--line); }
+.figures b { display: block; font: 800 1.5rem/1.1 var(--display); font-stretch: 90%; font-variant-numeric: tabular-nums; }
+.figures span { font-size: .82rem; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.tags li { font: 400 .75rem/1 var(--mono); padding: 6px 9px; border-radius: 6px; background: var(--bg); border: 1px solid var(--line); }
+.links { display: flex; gap: 18px; flex-wrap: wrap; font-weight: 600; font-size: .95rem; }
+.links a { text-decoration: none; border-bottom: 1.5px solid var(--accent); padding-bottom: 1px; }
+.links a:hover { color: var(--accent); }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; }
+.about p { margin: 0 0 16px; max-width: 62ch; }
+.record { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.record li { display: grid; gap: 2px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.record li:first-child { border-top: 1px solid var(--line); }
+.record b { font-weight: 600; }
+.record span { color: var(--muted); font-size: .92rem; }
+.record small { font: 500 .7rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+
+/* Footer */
+footer { border-top: 1px solid var(--line); padding-block: 40px 56px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.contact { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.email { font: 500 .95rem/1 var(--mono); user-select: all; }
+.copy { font: 600 .8rem/1 var(--body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+footer .fine { color: var(--muted); font-size: .85rem; }
+
+@media (max-width: 760px) {
+  .project, .about { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .project { padding: 14px; }
+  .hero { padding-block: 32px 48px; }
+  section { padding-block: 44px; }
+  .navlinks { gap: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Main">
+    <a class="brand" href="#top">JASON JEONG</a>
+    <div class="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="https://www.linkedin.com/in/jasonjaejeong" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/picklejae" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="label">Chicago Booth MBA ’28 · Former U.S. Army Logistics Officer</div>
+    <h1>I build tools that clear the paperwork.</h1>
+    <p class="lede">I’m <strong>Jason (Jaeyoung) Jeong</strong>. I spent my Army career moving money, parts and people, and most of the friction was spreadsheets nobody had time to reconcile. At Booth I study applied AI and business analytics, and I build small, working software that takes that kind of manual work off people’s desks.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn" href="https://www.linkedin.com/in/jasonjaejeong" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="sechead">
+      <h2>Projects</h2>
+      <p>Both are live. Click a screenshot to try it.</p>
+    </div>
+
+    <div class="projects">
+      <article class="project">
+        <a class="shot" href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener" aria-label="Open the Internship Compiler demo">
+          <img src="img/compiler.webp" alt="Internship Compiler board showing tech internship roles grouped by company, with deadlines and status" width="1440" height="900" loading="lazy">
+        </a>
+        <div class="info">
+          <div class="meta"><span class="status">Live</span><span>Web app</span></div>
+          <h3>Internship Compiler</h3>
+          <p>Two boards for MBA recruiting: one for summer internships and one for part-time internships you can do during the school year. They pull postings from the school career portal, LinkedIn and company career sites twice a day, then add visa notes, recruiting events and a plain-language summary of each job description. Classmates sign in with their school email and keep a private application pipeline.</p>
+          <div class="figures">
+            <div><b>300+</b><span>roles tracked</span></div>
+            <div><b>2×</b><span>daily refresh</span></div>
+          </div>
+          <ul class="tags">
+            <li>JavaScript</li><li>Supabase</li><li>Postgres row-level security</li><li>Email sign-in</li><li>Vercel</li><li>Claude automations</li>
+          </ul>
+          <div class="links">
+            <a href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener">Try the demo ↗</a>
+            <a href="https://github.com/picklejae/mba-internship-board" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="shot" href="https://fund-recon.vercel.app" target="_blank" rel="noopener" aria-label="Open Fund Recon">
+          <img src="img/fund-recon.webp" alt="Fund Recon results: 1,026 lines auto-labeled, 13 needing a label, 11 changed amounts" width="1440" height="900" loading="lazy">
+        </a>
+        <div class="info">
+          <div class="meta"><span class="status">Live</span><span>Web app</span></div>
+          <h3>Fund Recon</h3>
+          <p>An expense labeler for Army Status of Funds reports. Budget analysts used to label every obligation line by hand each month. This tool remembers how each document number was labeled last time, applies it to the new report, and flags only what needs a person: new lines, amounts that changed, and charges from other units.</p>
+          <div class="figures">
+            <div><b>~99%</b><span>of lines labeled automatically</span></div>
+            <div><b>1,026 / 1,039</b><span>in the sample report</span></div>
+          </div>
+          <ul class="tags">
+            <li>Python</li><li>Flask</li><li>pandas</li><li>SQLite</li><li>pytest</li><li>Vercel</li>
+          </ul>
+          <div class="links">
+            <a href="https://fund-recon.vercel.app" target="_blank" rel="noopener">Open the app ↗</a>
+            <a href="https://github.com/picklejae/automated-expenditure-labeling-system" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sechead"><h2>About</h2></div>
+    <div class="about">
+      <div>
+        <p>I graduated from West Point with a degree in economics and served as a logistics officer, with assignments in the 2nd Infantry Division in Korea and the 1st Special Forces Group. The job was keeping units supplied and budgets accounted for, usually with too little time and too many spreadsheets.</p>
+        <p>That is where I learned to look for the repeatable part of a task and automate it. Fund Recon started as a fix for a monthly reconciliation that took analysts days.</p>
+        <p>I build with AI as a working partner. I scope the problem, write the requirements and test cases, and use Claude to help write and review code, run data pipelines and check results against the source. I care about the unglamorous parts: access control, data that stays correct, and tools a non-technical teammate can use on day one.</p>
+      </div>
+      <ul class="record" aria-label="Background">
+        <li><small>Now</small><b>University of Chicago Booth School of Business</b><span>MBA candidate, Class of 2028 · Applied AI and Business Analytics</span></li>
+        <li><small>Service</small><b>U.S. Army, Logistics Officer</b><span>1st Special Forces Group · 2nd Infantry Division, Korea</span></li>
+        <li><small>Education</small><b>United States Military Academy, West Point</b><span>B.S. Economics</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="contact">
+      <span class="email" id="email">jjeong0@chicagobooth.edu</span>
+      <button class="copy" id="copy" type="button">Copy email</button>
+    </div>
+    <div class="fine">© 2026 Jason Jeong</div>
+  </footer>
+</div>
+
+<script>
+document.getElementById("copy").addEventListener("click", async (e) => {
+  const btn = e.currentTarget, text = document.getElementById("email").textContent;
+  try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
+  catch {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById("email"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected, press Ctrl+C";
+  }
+  setTimeout(() => (btn.textContent = "Copy email"), 2000);
+});
+</script>
+</body>
+</html>
