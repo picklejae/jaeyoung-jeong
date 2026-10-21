@@ -78,7 +78,9 @@ h1 {
   font-size: clamp(1.9rem, 4.4vw, 3.2rem); line-height: 1.1; letter-spacing: -.01em;
   text-wrap: balance;
 }
-.lede { margin: 0; max-width: 60ch; color: var(--muted); font-size: 1.2rem; line-height: 1.6; }
+.lede { margin: 0; max-width: 960px; color: var(--muted); font-size: 1.2rem; line-height: 1.6; }
+.lede .ln { display: block; }
+@media (min-width: 900px) { .lede .one { white-space: nowrap; } }
 .lede strong { color: var(--ink); font-weight: 600; }
 .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
 .btn {
@@ -176,7 +178,7 @@ footer .fine { color: var(--muted); font-size: .85rem; }
   <header class="hero" id="top">
     <div class="label">Chicago Booth MBA ’28 · Former U.S. Army Special Operations Logistician</div>
     <h1>I learn best by building.</h1>
-    <p class="lede">I’m <strong>Jaeyoung Jeong</strong>. I spent my Army career moving money, processing purchases, and getting parts and people where they needed to be.<br>Most of the friction came from outdated systems, so I started using technology to fix them. Now I’m pursuing my MBA at Chicago Booth, studying applied AI and analytics, so I can keep doing that outside the military.</p>
+    <p class="lede"><span class="ln">I’m <strong>Jaeyoung Jeong</strong>. I spent my Army career moving money, processing purchases, and getting parts and people where they needed to be.</span><span class="ln one">Most of the friction came from outdated systems, so I started using technology to fix them.</span><span class="ln">Now I’m pursuing my MBA at Chicago Booth, studying applied AI and analytics, so I can keep doing that outside the military.</span></p>
     <div class="actions">
       <a class="btn primary" href="#projects">See my projects</a>
       <a class="btn" href="https://www.linkedin.com/in/jasonjaejeong" target="_blank" rel="noopener">Connect on LinkedIn</a>
