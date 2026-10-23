@@ -139,6 +139,7 @@ h3 { margin: 0; font: 800 clamp(.9rem, 5.3cqi, 1.4rem)/1.1 var(--display); font-
 .kit { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px 28px; }
 .kit-h { font-size: clamp(1.4rem, 3vw, 1.8rem); margin: 6px 0 8px; text-transform: none; font-stretch: 88%; }
 .kit-text p { margin: 0 0 12px; color: var(--muted); max-width: 70ch; text-wrap: pretty; }
+.kit-text p.kit-intro { margin-bottom: 4px; }
 .steps { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: .95rem; }
 .steps li::marker { color: var(--muted); font-weight: 600; }
 .kit-cta { display: grid; gap: 8px; justify-items: center; text-align: center; }
@@ -268,7 +269,8 @@ footer .fine { color: var(--muted); font-size: .85rem; }
       <div class="kit-text">
         <div class="label">Free Claude skill</div>
         <h2 class="kit-h">Resume Bullet Library</h2>
-        <p>The tool I use to tailor my resume to every job. Claude keeps each version of your resume lines in a private page, then rewrites them for each job posting you paste in.</p>
+        <p class="kit-intro">The tool I use to tailor my resume to every job.</p>
+        <p>Claude keeps each version of your resume lines in a private page, then rewrites them for each job posting you paste in.</p>
         <ol class="steps">
           <li>Download the kit and add it to Claude as a skill</li>
           <li>Say “Set up my bullet library” and attach your resume</li>
