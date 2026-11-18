@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/__l5e/:path*", "destination": "/kodi/__l5e/:path*" },
+    { "source": "/kodi", "destination": "/kodi/_shell.html" },
+    { "source": "/kodi/:path*", "destination": "/kodi/_shell.html" }
+  ]
+}
