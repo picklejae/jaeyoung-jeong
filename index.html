@@ -271,7 +271,8 @@ h3 {
 .links a.go { border: 0; background: transparent; color: var(--accent); }
 .links a:hover { border-color: transparent; text-decoration-color: var(--accent); }
 @media (min-width: 761px) {
-  .hero { padding-block: clamp(32px, 5vh, 56px); row-gap: 14px; }
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding-block: 24px; row-gap: 10px; }
+  .hero .lede { font-size: 1rem; line-height: 1.5; }
   .hero h1 { font-size: clamp(3.2rem, 6.2vw, 5.4rem); }
 }
 
@@ -360,7 +361,7 @@ footer { padding-block: 28px 48px; }
     <div class="projects">
       <article class="project">
         <a class="shot" href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener" aria-label="Open the Summer Internship Compiler demo">
-          <img src="img/compiler.webp" alt="Summer internship board listing tech roles by company, with deadlines and status" width="1440" height="900" loading="lazy">
+          <img src="img/compiler.png" alt="Summer internship board listing tech roles by company, with deadlines and status" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
           <h3>Summer Internship Compiler</h3>
@@ -380,7 +381,7 @@ footer { padding-block: 28px 48px; }
 
       <article class="project">
         <a class="shot" href="https://picklejae.github.io/mba-internship-board/in-quarter/" target="_blank" rel="noopener" aria-label="Open the In-Quarter Internship Compiler demo">
-          <img src="img/inquarter.webp" alt="In-quarter internship board with part-time roles showing term, hours and pay" width="1440" height="900" loading="lazy">
+          <img src="img/inquarter.png" alt="In-quarter internship board with part-time roles showing term, hours and pay" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
           <h3>In-Quarter Internship Compiler</h3>
@@ -400,7 +401,7 @@ footer { padding-block: 28px 48px; }
 
       <article class="project">
         <a class="shot" href="https://picklejae.github.io/mba-internship-board/full-time/" target="_blank" rel="noopener" aria-label="Open the Full-Time Compiler demo">
-          <img src="img/fulltime.webp" alt="Full-time job board listing post-MBA tech roles with deadlines, for the Class of 2027" width="1440" height="900" loading="lazy">
+          <img src="img/fulltime.png" alt="Full-time job board listing post-MBA tech roles with deadlines, for the Class of 2027" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
           <h3>Full-Time Compiler</h3>
