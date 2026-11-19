@@ -1,0 +1,1 @@
+import{p as e,t}from"./index-BQy5MmCW.js";import{t as n}from"./SavedLookDetail-CuabmxMu.js";var r=e();function i(){let{id:e}=t.useParams();return(0,r.jsx)(n,{id:e})}export{i as component};

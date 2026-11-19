@@ -1,1 +1,0 @@
-import{p as e}from"./index-NmuLmpMG.js";import{t}from"./SavedLookDetail-N55TiKwY.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as component};
