@@ -244,42 +244,36 @@ h2 {
 }
 .sechead p { font-size: .9rem; }
 
-#projects { padding-block: 52px 64px; }
-#projects .sechead { margin-bottom: 20px; }
-.projects { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+#projects { padding-block: 24px 32px; }
+#projects .sechead { margin-bottom: 12px; }
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: start; }
 .project {
-  display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-  align-items: center; gap: clamp(24px, 4vw, 52px);
-  padding: 26px 0; border: 0; border-top: 1px solid var(--line);
-  border-radius: 0; background: transparent;
+  display: grid; grid-template-columns: minmax(62px, 25%) minmax(0, 1fr);
+  align-items: start; gap: 12px; padding: 12px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
 }
-.project:last-child { border-bottom: 1px solid var(--line); }
-.shot { border: 0; border-radius: 3px; background: var(--line); }
+.shot { border: 1px solid var(--line); border-radius: 4px; background: var(--line); }
 .shot img { aspect-ratio: 16 / 10; object-position: top left; }
-.info { gap: 12px; padding: 0; }
-.meta { gap: 9px; font-size: .68rem; letter-spacing: .04em; }
-.status { color: var(--accent); }
-.status::before { width: 6px; height: 6px; }
+.info { gap: 5px; padding: 0; }
 h3 {
-  font: 500 clamp(1.45rem, 2.4vw, 2rem)/1.12 Georgia, "Times New Roman", serif;
-  letter-spacing: -.025em; white-space: normal;
+  font: 500 clamp(1.05rem, 1.7vw, 1.3rem)/1.13 Georgia, "Times New Roman", serif;
+  letter-spacing: -.02em; white-space: normal;
 }
-.points { list-style: none; padding: 0; gap: 5px; font-size: .92rem; }
-.points li { position: relative; padding-left: 15px; }
-.points li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
-.tags { gap: 0; margin-top: 2px; }
-.tags li {
-  padding: 0; border: 0; border-radius: 0; background: transparent;
-  font: 500 .75rem/1.4 var(--body); color: var(--muted);
-}
-.tags li + li::before { content: "·"; padding: 0 8px; color: var(--line); }
-.links { gap: 18px; margin-top: 2px; }
+.project-summary, .project-more { margin: 0; font-size: .82rem; line-height: 1.4; }
+.project-more summary { color: var(--muted); cursor: pointer; }
+.project-more .points { margin: 6px 0; padding-left: 16px; font-size: inherit; }
+.project-more .tags { margin-top: 6px; }
+.links { gap: 6px 14px; margin: 0; }
 .links a {
-  padding: 2px 0; border: 0; border-radius: 0; font-size: .88rem;
-  text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px;
+  padding: 2px 0; border: 0; border-radius: 0; font-size: .82rem;
+  text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px;
 }
 .links a.go { border: 0; background: transparent; color: var(--accent); }
 .links a:hover { border-color: transparent; text-decoration-color: var(--accent); }
+@media (min-width: 761px) {
+  .hero { padding-block: clamp(32px, 5vh, 56px); row-gap: 14px; }
+  .hero h1 { font-size: clamp(3.2rem, 6.2vw, 5.4rem); }
+}
 
 #kit { padding-block: 28px 44px; }
 .kit {
@@ -318,8 +312,6 @@ footer { padding-block: 28px 48px; }
   .hero h1 { max-width: 11ch; font-size: clamp(3.1rem, 13vw, 5.2rem); }
   .hero .lede { max-width: 60ch; }
   section { padding-block: 48px; }
-  .projects { grid-template-columns: minmax(0, 1fr); }
-  .project { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 20px; }
   .kit { grid-template-columns: minmax(0, 1fr); }
   .kit-cta { justify-items: start; text-align: left; }
 }
@@ -327,10 +319,7 @@ footer { padding-block: 28px 48px; }
   body { font-size: 1rem; }
   nav { align-items: flex-start; }
   .navlinks { gap: 10px 15px; font-size: .84rem; }
-  .project { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 20px; }
-  .shot { max-height: none; }
-  .info { gap: 10px; }
-  .links { gap: 16px; }
+  .projects { grid-template-columns: minmax(0, 1fr); }
   .about { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   footer { align-items: flex-start; flex-direction: column; }
   .email { overflow-wrap: anywhere; }
@@ -366,7 +355,6 @@ footer { padding-block: 28px 48px; }
   <section id="projects">
     <div class="sechead">
       <h2>Projects</h2>
-      <p>Click a screenshot to open one.</p>
     </div>
 
     <div class="projects">
@@ -375,16 +363,18 @@ footer { padding-block: 28px 48px; }
           <img src="img/compiler.webp" alt="Summer internship board listing tech roles by company, with deadlines and status" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
-          <div class="meta"><span class="status">Live</span><span>Web app</span></div>
           <h3>Summer Internship Compiler</h3>
-          <ul class="points">
-            <li><b>300+</b> summer MBA roles, updated twice daily</li>
+          <p class="project-summary"><b>300+</b> summer MBA roles, updated twice daily</p>
+          <div class="links"><a class="go" href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener">Demo ↗</a><a href="https://internship-compiler.vercel.app/" target="_blank" rel="noopener">Real site <small>(Booth login)</small> ↗</a></div>
+          <details class="project-more">
+            <summary>Details</summary>
+            <ul class="points">
             <li>Pulls from Booth, LinkedIn and company sites</li>
             <li>Visa flags and short job summaries</li>
             <li>Private pipeline for each classmate</li>
-          </ul>
-          <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>Vercel</li><li>Claude</li></ul>
-          <div class="links"><a class="go" href="https://picklejae.github.io/mba-internship-board/" target="_blank" rel="noopener">Demo ↗</a><a href="https://internship-compiler.vercel.app/" target="_blank" rel="noopener">Real site <small>(Booth login)</small> ↗</a></div>
+            </ul>
+            <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>Vercel</li><li>Claude</li></ul>
+          </details>
         </div>
       </article>
 
@@ -393,16 +383,18 @@ footer { padding-block: 28px 48px; }
           <img src="img/inquarter.webp" alt="In-quarter internship board with part-time roles showing term, hours and pay" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
-          <div class="meta"><span class="status">Live</span><span>Web app</span></div>
           <h3>In-Quarter Internship Compiler</h3>
-          <ul class="points">
-            <li>Part-time roles during the school year</li>
+          <p class="project-summary">Part-time roles during the school year</p>
+          <div class="links"><a class="go" href="https://picklejae.github.io/mba-internship-board/in-quarter/" target="_blank" rel="noopener">Demo ↗</a><a href="https://internship-compiler.vercel.app/in-quarter/" target="_blank" rel="noopener">Real site <small>(Booth login)</small> ↗</a></div>
+          <details class="project-more">
+            <summary>Details</summary>
+            <ul class="points">
             <li>Only remote, Chicago or flexible roles</li>
             <li>Term, hours and pay at a glance</li>
             <li>Own private pipeline, apart from summer</li>
-          </ul>
-          <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>Vercel</li><li>Claude</li></ul>
-          <div class="links"><a class="go" href="https://picklejae.github.io/mba-internship-board/in-quarter/" target="_blank" rel="noopener">Demo ↗</a><a href="https://internship-compiler.vercel.app/in-quarter/" target="_blank" rel="noopener">Real site <small>(Booth login)</small> ↗</a></div>
+            </ul>
+            <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>Vercel</li><li>Claude</li></ul>
+          </details>
         </div>
       </article>
 
@@ -411,16 +403,18 @@ footer { padding-block: 28px 48px; }
           <img src="img/fulltime.webp" alt="Full-time job board listing post-MBA tech roles with deadlines, for the Class of 2027" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
-          <div class="meta"><span class="status">Live demo</span><span>Web app</span></div>
           <h3>Full-Time Compiler</h3>
-          <ul class="points">
-            <li>Post-MBA full-time roles for the Class of 2027</li>
+          <p class="project-summary">Post-MBA full-time roles for the Class of 2027</p>
+          <div class="links"><a class="go" href="https://picklejae.github.io/mba-internship-board/full-time/" target="_blank" rel="noopener">Demo ↗</a></div>
+          <details class="project-more">
+            <summary>Details</summary>
+            <ul class="points">
             <li>Tech and corporate roles, plus company events</li>
             <li>Same pipeline and visa flags as the summer board</li>
             <li>Own private pipeline, apart from internships</li>
-          </ul>
-          <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>Vercel</li><li>Claude</li></ul>
-          <div class="links"><a class="go" href="https://picklejae.github.io/mba-internship-board/full-time/" target="_blank" rel="noopener">Demo ↗</a></div>
+            </ul>
+            <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>Vercel</li><li>Claude</li></ul>
+          </details>
         </div>
       </article>
 
@@ -429,16 +423,18 @@ footer { padding-block: 28px 48px; }
           <img src="img/fund-recon.webp" alt="Government Purchase Auto-Sorter results: 1,026 lines auto-labeled, 13 needing a label, 11 changed amounts" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
-          <div class="meta"><span class="status">Live demo</span><span>Web app</span></div>
           <h3>Government Purchase Auto-Sorter</h3>
-          <ul class="points">
-            <li>Sorts monthly Army purchases automatically</li>
+          <p class="project-summary">Sorts monthly Army purchases automatically</p>
+          <div class="links"><a class="go" href="https://fund-recon.vercel.app" target="_blank" rel="noopener">Demo ↗</a></div>
+          <details class="project-more">
+            <summary>Details</summary>
+            <ul class="points">
             <li>Turns days of manual work into hours</li>
             <li>Flags only new lines and changed amounts</li>
             <li>Public demo runs on sample data only</li>
-          </ul>
-          <ul class="tags"><li>Python</li><li>Flask</li><li>pandas</li><li>Vercel</li></ul>
-          <div class="links"><a class="go" href="https://fund-recon.vercel.app" target="_blank" rel="noopener">Demo ↗</a></div>
+            </ul>
+            <ul class="tags"><li>Python</li><li>Flask</li><li>pandas</li><li>Vercel</li></ul>
+          </details>
         </div>
       </article>
 
@@ -447,16 +443,18 @@ footer { padding-block: 28px 48px; }
           <img src="img/kodi.webp" alt="Three KODI phone screens: the welcome screen, a swipe style quiz, and saved outfits built around a camel coat" width="1440" height="900" loading="lazy">
         </a>
         <div class="info">
-          <div class="meta"><span class="status">Hackathon</span><span>Mobile web app</span></div>
           <h3>KODI</h3>
-          <ul class="points">
-            <li>Built with a Booth team at BoothHacks 2026</li>
+          <p class="project-summary">Built with a Booth team at BoothHacks 2026</p>
+          <div class="links"><a class="go" href="kodi/" target="_blank" rel="noopener">Demo ↗</a><a href="https://github.com/picklejae/kodi_2" target="_blank" rel="noopener">Code on GitHub ↗</a></div>
+          <details class="project-more">
+            <summary>Details</summary>
+            <ul class="points">
             <li>Names your style in a 12-swipe quiz</li>
             <li>Snap a piece you own; AI styles three looks, safe to bold</li>
             <li>Shop the missing pieces and get feedback in a swipe feed</li>
-          </ul>
-          <ul class="tags"><li>React</li><li>TypeScript</li><li>Supabase</li><li>Lovable</li><li>AI image generation</li></ul>
-          <div class="links"><a class="go" href="kodi/" target="_blank" rel="noopener">Demo ↗</a><a href="https://github.com/picklejae/kodi_2" target="_blank" rel="noopener">Code on GitHub ↗</a></div>
+            </ul>
+            <ul class="tags"><li>React</li><li>TypeScript</li><li>Supabase</li><li>Lovable</li><li>AI image generation</li></ul>
+          </details>
         </div>
       </article>
     </div>
